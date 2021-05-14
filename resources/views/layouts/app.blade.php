@@ -58,29 +58,14 @@
                             <a href="{{ action('ContactUsController@viewMessages')  }}" class="nav-link">{{__('View Messages')}}</a>
                         </li>
                     @endif
-
                     <li class="nav-item dropdown">
                         <a href="#" id="menu"
-                           data-toggle="dropdown" class="nav-link dropdown-toggle"
-                           data-display="static">Dropdown</a>
+                           data-toggle="dropdown" class="nav-link dropdown-toggle @if(Request::has('nonprofit')) active @endif"
+                           data-display="static">Nonprofit Sites</a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-item dropdown-submenu">
                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">Submenu-1</a>
-                                <ul class="dropdown-menu">
-                                    <li class="dropdown-item">
-                                        <a href="#">Item-1</a>
-                                    </li>
-                                    <li class="dropdown-item">
-                                        <a href="#">Item-2</a>
-                                    </li>
-                                    <li class="dropdown-item">
-                                        <a href="#">Item-3</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-item dropdown-submenu">
-                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Submenu-2</a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu nav-item">
                                     <li class="dropdown-item">
                                         <a href="#">Item-1</a>
                                     </li>
@@ -135,12 +120,7 @@
         </div>
     </nav>
     <div class="container">
-        @if(isset($success))
-            @dump($success);
-        @endif
-        @if(isset($error))
-            @dump($error);
-        @endif
+        @include('inc.messages')
     </div>
     <main class="py-4">
         @yield('content')
