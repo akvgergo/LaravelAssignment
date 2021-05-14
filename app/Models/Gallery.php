@@ -11,6 +11,11 @@ class Gallery extends Model {
 	protected $table = 'gallery';
 	protected $fillable = [
 		'title',
-		'image'
+		'image',
+		'userid',
 	];
+
+	public function owner() {
+		return $this->hasOne('App\Models\User', 'id', 'userid');
+	}
 }
